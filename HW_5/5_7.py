@@ -12,3 +12,31 @@
 [{"firm_1": 5000, "firm_2": 3000, "firm_3": 1000}, {"average_profit": 2000}]
 Подсказка: использовать менеджер контекста.
 """
+firm_list = []
+firm_dict = dict()
+avrg_prof_dict = dict()
+accum_profit = 0
+firm_counter = 0
+try:
+    with open("companies_info.txt", encoding='UTF-8') as obj_file:
+        try:
+            for line in obj_file:
+                firm_info = line.split("   ", 2)
+                name = firm_info[0]
+                fin_data = list(map(float, firm_info[2].split()))
+                profit = fin_data[0] - fin_data[1]
+                firm_dict[name] = profit
+                if profit > 0:
+                    accum_profit += profit
+                    firm_counter += 1
+            firm_list.append(firm_dict)
+            try:
+                avrg_prof_dict["average_profit"] = accum_profit / firm_counter
+            except ZeroDivisionError:
+                avrg_prof_dict["average_profit"] = 0
+            firm_list.append(avrg_prof_dict)
+            print(firm_list)
+        except IndexError:
+            print("Ошибка формата файла!")
+except FileNotFoundError:
+    print("Файл не найден!")
