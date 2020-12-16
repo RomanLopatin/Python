@@ -12,6 +12,10 @@
 [{"firm_1": 5000, "firm_2": 3000, "firm_3": 1000}, {"average_profit": 2000}]
 Подсказка: использовать менеджер контекста.
 """
+
+import json
+
+
 firm_list = []
 firm_dict = dict()
 avrg_prof_dict = dict()
@@ -40,3 +44,5 @@ try:
             print("Ошибка формата файла!")
 except FileNotFoundError:
     print("Файл не найден!")
+with open("my_file.json", "w") as write_jsf:
+    json.dump(firm_list, write_jsf)
