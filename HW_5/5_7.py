@@ -45,4 +45,4 @@ try:
 except FileNotFoundError:
     print("Файл не найден!")
 with open("my_file.json", "w") as write_jsf:
-    json.dump(firm_list, write_jsf)
+    json.dump(firm_list, write_jsf, ensure_ascii=False)
