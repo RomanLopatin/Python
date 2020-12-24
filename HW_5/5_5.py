@@ -3,6 +3,7 @@
 Программа должна подсчитывать сумму чисел в файле и выводить ее на экран.
 """
 from functools import reduce
+from random import randint
 
 
 def my_sum_func(prev_el, el):
@@ -11,24 +12,33 @@ def my_sum_func(prev_el, el):
     return prev_el + el
 
 
-our_number_list = ("1 3 65 345 34 23 44 34 34").split()
-print("Исходный список: ", our_number_list)
-our_file = "new_file.txt"
+#
+# our_number_list = ("1 3 65 345 34 23 44 34 34").split()
+# print("Исходный список: ", our_number_list)
+# our_file = "new_file.txt"
 #  Запись файла
-try:
-    with open(our_file, "w") as f_obj:
-        for el in our_number_list:
-            f_obj.write(el + " ")
-except IOError:
-    print("Ошибка ввода-вывода!")
+# try:
+#     with open(our_file, "w") as f_obj:
+#         for el in our_number_list:
+#             f_obj.write(el + " ")
+# except IOError:
+#     print("Ошибка ввода-вывода!")
+#
+# #  Чтение файла и подсчет
+# try:
+#     with open(our_file, "r") as f_obj:
+#         print(f"Сумма чисел равна: {sum(list(map(float, f_obj.readline().split())))}")
+# except IOError:
+#     print("Ошибка ввода-вывода!")
+# except ValueError:
+#     print("Ошибка преобразования типа!")
+# except NameError:
+#     print("Файл не обнаружен!")
 
-#  Чтение файла и подсчет
-try:
-    with open(our_file, "r") as f_obj:
-        print(f"Сумма чисел равна: {sum(list(map(float, f_obj.readline().split())))}")
-except IOError:
-    print("Ошибка ввода-вывода!")
-except ValueError:
-    print("Ошибка преобразования типа!")
-except NameError:
-    print("Файл не обнаружен!")
+with open('5.txt', mode="w+", encoding="utf-8") as f:
+    f.write(" ".join(([str(randint(1, 1000)) for _ in range(1000)])))
+    f.seek(0)
+
+    #   line = f.readline()
+    #   line_int = map(int, line.split())
+    print(sum(map(int, f.readline().split())))

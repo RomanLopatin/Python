@@ -12,6 +12,7 @@ my_dict = dict()
 with open("Curriculum.txt") as my_file_obj:
     for line in my_file_obj:
         line_list = line.split(":", 1)
+        # name, rest = line.split(":")
         list_quant = (line_list[1].split())
         subj_hours = 0
         for el in list_quant:
