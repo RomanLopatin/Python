@@ -22,7 +22,6 @@ our_structure = list();
 product_data_dict = {"название": "", "цена": "", "количество": "", "единица измерения": ""}
 product_data_analitics = {"название": [], "цена": [], "количество": [], "единица измерения": []}
 
-
 ind = 0;
 while True:
     if input("Чтобы закончить ввод, нажмите 'Q':").lower() == 'q':
@@ -40,4 +39,3 @@ while True:
     print("Аналитика по товару:")
     print(product_data_analitics)
     print("x" * 50)
-
